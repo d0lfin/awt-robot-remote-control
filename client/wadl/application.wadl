@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:application xmlns:ns2="http://wadl.dev.java.net/2009/02">
+    <ns2:doc jersey:generatedBy="Jersey: 1.12 02/15/2012 04:51 PM" xmlns:jersey="http://jersey.java.net/"/>
+    <ns2:grammars/>
+    <ns2:resources base="{service}">
+        <ns2:resource path="/robot">
+            <ns2:resource path="/getRGBPixelColor/{x}/{y}/">
+                <ns2:param name="y" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="getRGBPixelColor" name="GET">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/getBrowserOffset/">
+                <ns2:method id="getBrowserOffset" name="GET">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/keyPress/{x}/">
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="keyPress" name="POST">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/keyRelease/{x}/">
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="keyRelease" name="POST">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/mouseMove/{x}/{y}/">
+                <ns2:param name="y" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="mouseMove" name="POST">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/mousePress/{x}/">
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="mousePress" name="POST">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/mouseRelease/{x}/">
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="mouseRelease" name="POST">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+            <ns2:resource path="/mouseWheel/{x}/">
+                <ns2:param name="x" style="template" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+                <ns2:method id="mouseWheel" name="POST">
+                    <ns2:response>
+                        <ns2:representation mediaType="text/plain"/>
+                    </ns2:response>
+                </ns2:method>
+            </ns2:resource>
+        </ns2:resource>
+    </ns2:resources>
+</ns2:application>
