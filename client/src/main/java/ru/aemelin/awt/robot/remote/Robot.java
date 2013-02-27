@@ -133,6 +133,60 @@ public class Robot {
         }
     }
 
+    public void select(WebElement element){
+        try{
+            int x = browserOffset[0] + element.getLocation().getX();
+            int y = browserOffset[1] + element.getLocation().getY() + element.getSize().getHeight() / 2;
+            int width = element.getSize().getWidth();
+            mouseMove(x - 1, y);
+            mousePress(LEFT_BUTTON);
+            for(int i = 0; i < width + 3; i += 5) mouseMove(x + i, y);
+            mouseRelease(LEFT_BUTTON);
+        }
+        catch (NullPointerException e){
+            throw new NullPointerException("Get the offset of browser window before select the WebElement.");
+        }
+    }
+
+    public void copy(){
+        if(getCurrentOS().equals(OS.MAC)){
+            keyPress(KeyEvent.VK_META);
+            keyPress(KeyEvent.VK_C);
+            keyRelease(KeyEvent.VK_C);
+            keyRelease(KeyEvent.VK_META);
+        }
+        else{
+            keyPress(KeyEvent.VK_CONTROL);
+            keyPress(KeyEvent.VK_C);
+            keyRelease(KeyEvent.VK_C);
+            keyRelease(KeyEvent.VK_CONTROL);
+        }
+    }
+
+    public void paste(){
+        if(getCurrentOS().equals(OS.MAC)){
+            keyPress(KeyEvent.VK_META);
+            keyPress(KeyEvent.VK_V);
+            keyRelease(KeyEvent.VK_V);
+            keyRelease(KeyEvent.VK_META);
+        }
+        else{
+            keyPress(KeyEvent.VK_CONTROL);
+            keyPress(KeyEvent.VK_V);
+            keyRelease(KeyEvent.VK_V);
+            keyRelease(KeyEvent.VK_CONTROL);
+        }
+    }
+
+    public OS getCurrentOS(){
+        String os = System.getProperty("os.name").toLowerCase();
+        if(os.contains("win")) return OS.WINDOWS;
+        else if(os.contains("mac")) return OS.MAC;
+        else if(os.contains("nix") || os.contains("nux") || os.contains("aix")) return OS.UNIX;
+        else if(os.contains("sunos")) return OS.SOLARIS;
+        else return OS.UNKNOWN;
+    }
+
     public void sendKeys(String keys){
         for(int i = 0; i < keys.length(); i++){
             String key = keys.substring(i, i + 1);
@@ -143,5 +197,9 @@ public class Robot {
             keyRelease(keyCode);
             if(upperCase) keyRelease(KeyEvent.VK_SHIFT);
         }
+    }
+
+    public enum OS {
+        WINDOWS, MAC, UNIX, SOLARIS, UNKNOWN
     }
 }

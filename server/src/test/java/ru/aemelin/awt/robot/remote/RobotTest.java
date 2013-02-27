@@ -80,6 +80,19 @@ public class RobotTest {
         assertThat("Ссылка на почту при наведении должна покраснеть", link.getCssValue("color"), is(color));
     }
 
+    @Test
+    public void copyPasteTest() throws Exception{
+        WebElement link = driver.findElement(By.id("sethome"));
+        WebElement input = driver.findElement(By.xpath("//table[contains(@class, 'b-search')]//input[@id = 'text']"));
+        robot.getBrowserOffset(driver);
+        robot.select(link);
+        robot.copy();
+        robot.mouseClick(input);
+        robot.paste();
+        assertThat("Текст ссылки не скопировался в строку поиска", input.getAttribute("value"),
+                containsString(link.getText()));
+    }
+
     @AfterClass
     public static void stopServer(){
         JettyServer.stopServer();
