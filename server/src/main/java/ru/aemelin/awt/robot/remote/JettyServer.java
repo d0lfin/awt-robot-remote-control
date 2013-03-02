@@ -16,9 +16,8 @@ import ru.aemelin.awt.robot.remote.rest.RobotService;
  */
 
 public class JettyServer {
-    private static Server server = new Server(6080);
-
     public static void main(String[] args) throws Exception {
+        Server server = new Server(6080);
         Context root = new Context(server, "/", Context.SESSIONS);
         root.addServlet(new ServletHolder(new ServletContainer(
                 new PackagesResourceConfig((RobotService.class.getPackage().getName())))),
