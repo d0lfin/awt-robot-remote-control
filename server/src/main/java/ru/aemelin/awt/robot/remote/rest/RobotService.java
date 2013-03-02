@@ -20,7 +20,7 @@ public class RobotService {
         add(new Color(0xFF, 0x74, 0x00));
         add(new Color(0xCD, 0x00, 0x74));
     }};
-    private static final int COLOR_ACCURACY = 40;
+    private static final int COLOR_ACCURACY = 100;
     private static Robot robot;
 
     static {

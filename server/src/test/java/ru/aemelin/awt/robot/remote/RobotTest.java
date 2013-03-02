@@ -1,9 +1,6 @@
 package ru.aemelin.awt.robot.remote;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,11 +22,6 @@ import static org.junit.matchers.JUnitMatchers.containsString;
 public class RobotTest {
     private static final WebDriver driver = new FirefoxDriver();
     private static final Robot robot = new Robot("http://localhost:6080");
-
-    @BeforeClass
-    public static void startServer() throws Exception {
-        JettyServer.main(new String[]{});
-    }
 
     @Before
     public void openPage(){
@@ -95,7 +87,6 @@ public class RobotTest {
 
     @AfterClass
     public static void stopServer(){
-        JettyServer.stopServer();
         driver.close();
     }
 }
